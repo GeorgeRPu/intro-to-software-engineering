@@ -1,0 +1,22 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: index
+parts:
+  - caption: Software Development
+    chapters:
+    - file: dev/intro
+    - file: dev/requirements
+    - file: dev/design
+    - file: dev/design-docs
+  - caption: Operations
+    chapters:
+    - file: ops/intro
+    - file: ops/observability
+    - file: ops/alarms
+    - file: ops/oncall
+    - file: ops/postmortems
+  - caption: Career
+    chapters:
+    - file: career/intro
