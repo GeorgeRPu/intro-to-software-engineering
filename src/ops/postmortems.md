@@ -55,11 +55,13 @@ plt.legend()
 
 The purpose of a post-mortem is improvement, not to assign blame. Writing a post-mortem is not punishment, but rather a learning opportunity. Blamelessness is not just the nice or ethical thing to do. A culture of blame leads to a vicious cycle whose end result is more incidents. Blaming people also means not blaming the systems and processes around people that are also at fault.
 
-```{figure} ../images/blame-cycle.png
----
-name: fig-blame-cycle
----
-The cycle of blame.
+```{mermaid}
+graph TD
+    A[Engineer is blamed and punished for an incident] --> B[Trust among engineers and management is reduced]
+    B --> C[Engineers become silent]
+    C --> D[Less awareness of latent conditions for failure]
+    D --> E[More incidents occur]
+    D --> A
 ```
 
 To make post-mortems blameless, the humans involved in an incident or the response should not be named. Instead, replace names with the placeholder of title and number. For example, use engineer $1, 2, \dots, n$ in place of engineer's names.

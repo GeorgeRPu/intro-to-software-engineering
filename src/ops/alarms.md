@@ -26,12 +26,10 @@ Alarms can also take actions that are not notifications. A common cause of outag
 
 The **alarm rule** is a Boolean statement that, when true, **triggers** the alarm by moving it into the ALARM state. When the alarm rule is False, the alarm moves back into OK. Below is the state machine diagram of an alarm.
 
-```{figure} ../images/alarm-state-machine.png
----
-width: 50%
-name: fig-alarm-state
----
-The state machine diagram of an alarm.
+```{mermaid}
+stateDiagram-v2
+    OK --> ALARM: alarm rule is true
+    ALARM --> OK: alarm rule is false
 ```
 
 Alarm rules are almost always a function of a metric. Unlike the remaining observability signals (logs, distributed traces, or profiles), metrics tend to measure one thing which makes for more precise alarms. An alarm with the alarm rule `failed_request metric > 5` is more precise than an alarm with the alarm rule `number of ERROR logs > 5`. Most systems are instrumented such that there is only 1 line which emits the failed_request metric but many lines which emit ERROR logs.
@@ -76,7 +74,7 @@ plt.ylabel('CPU Utilization (%)')
 
 We apply 4 different alarm rules to the CPU utilization metric that check if the CPU is overexerted. The alarm rules are every combination of $t = 50\%, 90\%$ and $d = e = 5, 10$.
 
-*Table TODO*. Example alarm rules.
+*Table 1*. Example alarm rules.
 
 |                              | Threshold = 50%                                              | Threshold = 90%                                              |
 | ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -147,12 +145,14 @@ $$
 (\texttt{getValue}\text{ latency alarm} = \texttt{ALARM}).
 $$
 
-```{figure} ../images/composite-alarm-example.png
----
-width: 75%
-name: fig-composite-alarm-example
----
-An example set of alarms for a key-value store.
+```{mermaid}
+graph LR
+    masterFailureAlarm --> putKeyValuePairFatalsAlarm
+    masterFailureAlarm --> putKeyValuePairErrorsAlarm
+    masterFailureAlarm --> getValueFatalsAlarm
+    masterFailureAlarm --> getValueErrorsAlarm
+    masterLatencyAlarm --> putKeyValuePairLatencyAlarm
+    masterLatencyAlarm --> getValueLatencyAlarm
 ```
 
 ## Instrumentation
