@@ -1,5 +1,7 @@
-jupyter-book
+jupyter-book===1.0.0
 matplotlib
 numpy
+opentelemetry-api
+opentelemetry-sdk
 prometheus-client
 sphinxcontrib-mermaid
