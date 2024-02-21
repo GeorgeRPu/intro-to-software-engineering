@@ -4,12 +4,21 @@
 format: jb-book
 root: index
 parts:
+  - caption: Working in a Team
+    chapters:
+    - file: team/intro
+    - file: team/roles
+    - file: team/disagreement
   - caption: Software Development
     chapters:
     - file: dev/intro
     - file: dev/requirements
     - file: dev/design
     - file: dev/design-docs
+    - file: dev/coding
+    - file: dev/code-review
+    - file: dev/releases
+    - file: dev/devex
   - caption: Operations
     chapters:
     - file: ops/intro
@@ -20,3 +29,7 @@ parts:
   - caption: Career
     chapters:
     - file: career/intro
+    - file: career/goals
+    - file: career/growth
+    - file: career/switch
+    - file: career/life
